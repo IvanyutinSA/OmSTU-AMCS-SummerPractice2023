@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<coverage line-rate="0.9523" branch-rate="0.9375" version="1.9" timestamp="1687965866" lines-covered="20" lines-valid="21" branches-covered="15" branches-valid="16">
+  <sources>
+    <source>/</source>
+  </sources>
+  <packages>
+    <package name="SquareEquationLib" line-rate="0.9523" branch-rate="0.9375" complexity="16">
+      <classes>
+        <class name="SquareEquationLib.SquareEquation" filename="home/ubuntu/projects/OmSTU-AMCS-SummerPractice2023/SquareEquationLib/SquareEquation.cs" line-rate="0.9523" branch-rate="0.9375" complexity="16">
+          <methods>
+            <method name="Solve" signature="(System.Double,System.Double,System.Double)" line-rate="0.9523" branch-rate="0.9375" complexity="16">
+              <lines>
+                <line number="6" hits="13" branch="False" />
+                <line number="9" hits="13" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="20" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="10" hits="0" branch="False" />
+                <line number="12" hits="90" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="106" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="13" hits="30" branch="False" />
+                <line number="14" hits="30" branch="True" condition-coverage="100% (4/4)">
+                  <conditions>
+                    <condition number="69" type="jump" coverage="100%" />
+                    <condition number="85" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="15" hits="9" branch="False" />
+                <line number="16" hits="21" branch="False" />
+                <line number="18" hits="4" branch="False" />
+                <line number="19" hits="4" branch="True" condition-coverage="100% (4/4)">
+                  <conditions>
+                    <condition number="133" type="jump" coverage="100%" />
+                    <condition number="162" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="20" hits="2" branch="False" />
+                <line number="22" hits="2" branch="False" />
+                <line number="23" hits="2" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="218" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="24" hits="1" branch="False" />
+                <line number="25" hits="1" branch="False" />
+                <line number="26" hits="1" branch="False" />
+                <line number="27" hits="2" branch="False" />
+                <line number="29" hits="2" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="260" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="30" hits="1" branch="False" />
+                <line number="32" hits="1" branch="False" />
+                <line number="33" hits="4" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="6" hits="13" branch="False" />
+            <line number="9" hits="13" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="20" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="10" hits="0" branch="False" />
+            <line number="12" hits="90" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="106" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="13" hits="30" branch="False" />
+            <line number="14" hits="30" branch="True" condition-coverage="100% (4/4)">
+              <conditions>
+                <condition number="69" type="jump" coverage="100%" />
+                <condition number="85" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="15" hits="9" branch="False" />
+            <line number="16" hits="21" branch="False" />
+            <line number="18" hits="4" branch="False" />
+            <line number="19" hits="4" branch="True" condition-coverage="100% (4/4)">
+              <conditions>
+                <condition number="133" type="jump" coverage="100%" />
+                <condition number="162" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="20" hits="2" branch="False" />
+            <line number="22" hits="2" branch="False" />
+            <line number="23" hits="2" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="218" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="24" hits="1" branch="False" />
+            <line number="25" hits="1" branch="False" />
+            <line number="26" hits="1" branch="False" />
+            <line number="27" hits="2" branch="False" />
+            <line number="29" hits="2" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="260" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="30" hits="1" branch="False" />
+            <line number="32" hits="1" branch="False" />
+            <line number="33" hits="4" branch="False" />
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>
