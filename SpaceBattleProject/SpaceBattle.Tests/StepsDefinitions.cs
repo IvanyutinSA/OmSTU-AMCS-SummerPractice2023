@@ -2,11 +2,102 @@ namespace SpaceBattle.Tests;
 using SpaceBattleLib;
 using TechTalk.SpecFlow;
 
+[Binding, Scope(Feature = "Поворот корабля")]
+public class SpaceshipRotate
+{
+    private Spaceship _spaceShip = new Spaceship();
+    private Exception _actualException = new Exception();
+    
+    [Given(@"космический корабль, угол наклона которого невозможно определить")]
+    public void ДопустимКосмическийКорабльУголНаклонаКоторогоНевозможноОпределить()
+    {
+        _spaceShip.Position.RotateAngle = double.NaN;
+    }
+    [Given(@"имеет мгновенную угловую скорость (.*) град")]
+    public void ДопустимИмеетМгновеннуюУгловуюСкоростьГрад(double angularVelocity)
+    {
+        _spaceShip.Engine.AngularVelocity = angularVelocity;
+    }
+    [When(@"происходит вращение вокруг собственной оси")]
+    public void КогдаПроисходитВращениеВокругСобственнойОси()
+    {
+        try
+        {
+            _spaceShip.Rotate();
+        }
+        catch (Exception e)
+        {
+            _actualException = e;
+        }
+    }
+    [Then(@"возникает ошибка Exception")]
+    public void ТоВозникаетОшибкаException()
+    {
+        Assert.ThrowsAsync<Exception>(() => throw _actualException);
+    }
+    [Given(@"космический корабль имеет угол наклона (.*) град к оси OX")]
+    public void ДопустимКосмическийКорабльИмеетУголНаклонаГрадКОсиOX(double rotateAngle)
+    {
+        _spaceShip.Position.RotateAngle = rotateAngle;
+    }
+    [Then(@"угол наклона космического корабля к оси OX составляет (.*) град")]
+    public void ТоУголНаклонаКосмическогоКорабляКОсиOXСоставляетГрад(double rotateAngle)
+    {
+        _spaceShip.Position.RotateAngle = rotateAngle;
+    }
+    [Given(@"мгновенную угловую скорость невозможно определить")]
+    public void ДопустимМгновеннуюУгловуюСкоростьНевозможноОпределить()
+    {
+        _spaceShip.Engine.AngularVelocity = double.NaN;
+    }
+    [Given(@"невозможно изменить уголд наклона к оси OX космического корабля")]
+    public void ДопустимНевозможноИзменитьУголдНаклонаКОсиOXКосмическогоКорабля()
+    {
+        _spaceShip.Position.RotateAngle = double.NaN;
+    }
+
+
+}
+
+
 [Binding, Scope(Feature =  "Расход топлива")]
 public class SpaceshipFuel
 {
     private Spaceship _spaceShip = new Spaceship();
     private Exception _actualException = new Exception();
+    [When(@"происходит прямолинейное равномерное движение без деформации")]
+    public void КогдаПроисходитПрямолинейноеРавномерноеДвижениеБезДеформации()
+    {
+        try 
+        {
+            _spaceShip.UniformMotion();
+        }
+        catch (Exception e)
+        {
+            _actualException = e;
+        }
+    }   
+    [Given(@"космический корабль имеет топливо в объеме (.*) ед")]
+    public void ДопустимКосмическийКорабльИмеетТопливоВОбъемеЕд(double fuel)
+    {  
+        _spaceShip.Engine.Fuel = fuel;
+    }
+    [Then(@"новый объем топлива космического корабля равен (.*) ед")]
+    public void ТоНовыйОбъемТопливаКосмическогоКорабляРавенЕд(double fuel)
+    {
+        _spaceShip.Engine.Fuel = fuel;
+    }
+
+    [Given(@"имеет скорость расхода топлива при движении (.*) ед")]
+    public void ДопустимИмеетСкоростьРасходаТопливаПриДвиженииЕд(double fuelConsumption)
+    {
+        _spaceShip.Engine.FuelConsumption = fuelConsumption;
+    }
+    [Then(@"возникает ошибка Exception")]
+    public void ТоВозникаетОшибкаException()
+    {
+        Assert.ThrowsAsync<Exception>(() => throw _actualException);
+    }
 }
 
 
