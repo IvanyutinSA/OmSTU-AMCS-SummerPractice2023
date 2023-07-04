@@ -27,14 +27,16 @@ class Program
         taskMethod["GetStudentsWithHighestGPA"] = GetStudentsWithHighestGPA;
 
         var taskResult = JObject.Parse(taskMethod[taskName](data));
+        string s = taskMethod[taskName](data);
 
         using (StreamWriter file = File.CreateText(args[1]))
         using (JsonTextWriter writer = new JsonTextWriter(file))
         {
             // tableJSON.WriteTo(writer);
             taskResult.WriteTo(writer);
-            
         } 
+
+        File.WriteAllText(args[1], s);
 
         // Console.WriteLine(table["taskName"]);
         // using(JsonTextReader reader = new JsonTextReader(new StringReader()))
@@ -46,7 +48,7 @@ class Program
                          .Select(x => new Dictionary<string, double> {[x.Key]=x.Average(x => x.Mark)});
         var response = new Dictionary<string, object>() {["Response"]=result};
 
-        return JsonConvert.SerializeObject(response); 
+        return JsonConvert.SerializeObject(response, Formatting.Indented); 
     }
 
     public static string GetBestGroupsByDiscipline(List<AcademicPerformance> data)
@@ -76,7 +78,7 @@ class Program
             );
         
         var response = new {Response = result};        
-        return JsonConvert.SerializeObject(response);
+        return JsonConvert.SerializeObject(response, Formatting.Indented);
     }
 
     public static string GetStudentsWithHighestGPA(List<AcademicPerformance> data)
@@ -86,7 +88,7 @@ class Program
             .Select(
                 cadet => new {
                     Cadet = cadet.Key,
-                    GPA = cadet.Average(x => x.Mark)
+                    GPA = Math.Round(cadet.Average(x => x.Mark), 2)
                 }
             )
             .GroupBy(x => x.GPA)
@@ -94,7 +96,7 @@ class Program
             .First();
 
         var response = new {Response = result};
-        return JsonConvert.SerializeObject(response);
+        return JsonConvert.SerializeObject(response, Formatting.Indented);
         
     }
 }
