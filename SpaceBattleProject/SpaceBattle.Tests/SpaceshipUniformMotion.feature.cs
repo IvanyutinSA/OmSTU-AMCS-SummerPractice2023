@@ -19,7 +19,7 @@ namespace SpaceBattle.Tests
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class КосмическоеПутешествиеFeature : object, Xunit.IClassFixture<КосмическоеПутешествиеFeature.FixtureData>, System.IDisposable
+    public partial class РавномерноеДвижениеКорабляFeature : object, Xunit.IClassFixture<РавномерноеДвижениеКорабляFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace SpaceBattle.Tests
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "SpaceBattle.Tests.feature"
+#line 1 "SpaceshipUniformMotion.feature"
 #line hidden
         
-        public КосмическоеПутешествиеFeature(КосмическоеПутешествиеFeature.FixtureData fixtureData, SpaceBattle_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public РавномерноеДвижениеКорабляFeature(РавномерноеДвижениеКорабляFeature.FixtureData fixtureData, SpaceBattle_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,7 +40,7 @@ namespace SpaceBattle.Tests
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("ru-RU"), "", "Космическое путешествие", null, ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("ru-RU"), "", "Равномерное движение корабля", null, ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -81,7 +81,7 @@ namespace SpaceBattle.Tests
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="Игровой объект может перемещаться по прямой")]
-        [Xunit.TraitAttribute("FeatureTitle", "Космическое путешествие")]
+        [Xunit.TraitAttribute("FeatureTitle", "Равномерное движение корабля")]
         [Xunit.TraitAttribute("Description", "Игровой объект может перемещаться по прямой")]
         public void ИгровойОбъектМожетПеремещатьсяПоПрямой()
         {
@@ -116,7 +116,7 @@ this.ScenarioInitialize(scenarioInfo);
         
         [Xunit.SkippableFactAttribute(DisplayName="Если невозможно определить текущее положение игрового объекта в пространстве, то " +
             "перемещение по прямой невозможно")]
-        [Xunit.TraitAttribute("FeatureTitle", "Космическое путешествие")]
+        [Xunit.TraitAttribute("FeatureTitle", "Равномерное движение корабля")]
         [Xunit.TraitAttribute("Description", "Если невозможно определить текущее положение игрового объекта в пространстве, то " +
             "перемещение по прямой невозможно")]
         public void ЕслиНевозможноОпределитьТекущееПоложениеИгровогоОбъектаВПространствеТоПеремещениеПоПрямойНевозможно()
@@ -153,7 +153,7 @@ this.ScenarioInitialize(scenarioInfo);
         
         [Xunit.SkippableFactAttribute(DisplayName="Если невозможно определить мгновенную скорость игрового объекта, то перемещение п" +
             "о прямой невозможно")]
-        [Xunit.TraitAttribute("FeatureTitle", "Космическое путешествие")]
+        [Xunit.TraitAttribute("FeatureTitle", "Равномерное движение корабля")]
         [Xunit.TraitAttribute("Description", "Если невозможно определить мгновенную скорость игрового объекта, то перемещение п" +
             "о прямой невозможно")]
         public void ЕслиНевозможноОпределитьМгновеннуюСкоростьИгровогоОбъектаТоПеремещениеПоПрямойНевозможно()
@@ -190,7 +190,7 @@ this.ScenarioInitialize(scenarioInfo);
         
         [Xunit.SkippableFactAttribute(DisplayName="Если невозможно изменить положение игрового объекта в пространстве, то перемещени" +
             "е по прямой невозможно")]
-        [Xunit.TraitAttribute("FeatureTitle", "Космическое путешествие")]
+        [Xunit.TraitAttribute("FeatureTitle", "Равномерное движение корабля")]
         [Xunit.TraitAttribute("Description", "Если невозможно изменить положение игрового объекта в пространстве, то перемещени" +
             "е по прямой невозможно")]
         public void ЕслиНевозможноИзменитьПоложениеИгровогоОбъектаВПространствеТоПеремещениеПоПрямойНевозможно()
@@ -235,12 +235,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             public FixtureData()
             {
-                КосмическоеПутешествиеFeature.FeatureSetup();
+                РавномерноеДвижениеКорабляFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                КосмическоеПутешествиеFeature.FeatureTearDown();
+                РавномерноеДвижениеКорабляFeature.FeatureTearDown();
             }
         }
     }
