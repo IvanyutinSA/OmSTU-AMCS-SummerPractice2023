@@ -1,5 +1,4 @@
-﻿using Newtonsoft;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace SpaceCadets;
@@ -26,28 +25,22 @@ class Program
         taskMethod["GetBestGroupsByDiscipline"] = GetBestGroupsByDiscipline;
         taskMethod["GetStudentsWithHighestGPA"] = GetStudentsWithHighestGPA;
 
-        var taskResult = JObject.Parse(taskMethod[taskName](data));
         string s = taskMethod[taskName](data);
 
-        using (StreamWriter file = File.CreateText(args[1]))
-        using (JsonTextWriter writer = new JsonTextWriter(file))
-        {
-            // tableJSON.WriteTo(writer);
-            taskResult.WriteTo(writer);
-        } 
-
         File.WriteAllText(args[1], s);
-
-        // Console.WriteLine(table["taskName"]);
-        // using(JsonTextReader reader = new JsonTextReader(new StringReader()))
     }
     
     public static string CalculateGPAByDiscipline(List<AcademicPerformance> data)
     {
-        var result = data.GroupBy(x => x.Discipline)
-                         .Select(x => new Dictionary<string, double> {[x.Key]=x.Average(x => x.Mark)});
-        var response = new Dictionary<string, object>() {["Response"]=result};
+        var result = data
+            .GroupBy(x => x.Discipline)
+            .Select(
+                x => new Dictionary<string, double>  {
+                    [x.Key] = Math.Round(x.Average(x => x.Mark))
+                } 
+            );
 
+        var response = new {Response = result};
         return JsonConvert.SerializeObject(response, Formatting.Indented); 
     }
 
@@ -62,7 +55,7 @@ class Program
                                            .Select(
                                                 group => new {
                                                     Group = group.Key,
-                                                    GPA = group.Average(aPref => aPref.Mark)
+                                                    GPA = Math.Round(group.Average(aPref => aPref.Mark), 2)
                                                 }
                                            )
                                            .OrderByDescending(x => x.GPA)
