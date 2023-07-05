@@ -4,7 +4,7 @@ public class SquareEquation
 {
     public static double[] Solve(double a, double b, double c)
     {        
-        const double TOLERANCE = 0.00000001;
+        const double TOLERANCE = 0.000001;
 
         if (Math.Abs(a) < TOLERANCE)
             throw new System.ArgumentException();

@@ -8,23 +8,15 @@ public class StepDefinitions
 {
     private const double TOLERATE = 10e-7;
     private double[] _coefficients = new double[3];
-    private double[] _actualRoots = new double[0];
-    private Exception _actualException = new Exception();
+    private Func<double[]> _roots = () => new double[0];
     [When("вычисляются корни квадратного уравнения")]
     public void EvaluateEquationRoots()
     {
-        try 
-        {
-            _actualRoots = SquareEquation.Solve(
+        _roots = () => SquareEquation.Solve(
                 _coefficients[0],
                 _coefficients[1],
                 _coefficients[2]
-            );
-        }
-        catch (Exception e)
-        {
-            _actualException =  e;
-        }
+                );
     }
     [Given(@"Квадратное уравнение с коэффициентами \((.*), (.*), (.*)\)")]
     public void GiveSqaureEquationCoefficients(string a, string b, string c) 
@@ -46,47 +38,50 @@ public class StepDefinitions
     [Then("выбрасывается исключение ArgumentException")]
     public void ThrowingArgumentException()
     {
-        Assert.ThrowsAsync<ArgumentException>(() => throw _actualException);
+        Assert.Throws<ArgumentException>(() => _roots());
     }
     
     [Then(@"квадратное уравнение имеет один корень (.*) кратности два")]
     public void SquareEquationHasOneRoot(double x)
     {
+        double[] actualRoots = _roots();
         double[] expectedRoots = new double[] {x};
         
-        if (_actualRoots.Length != 1)
+        if (actualRoots.Length != 1)
         {
             Assert.Fail("");
         }
 
         for (int i = 0; i < expectedRoots.Length; i++)
         {
-            Assert.Equal(_actualRoots[i], expectedRoots[i]);
+            Assert.Equal(actualRoots[i], expectedRoots[i]);
         }
     }
 
     [Then(@"квадратное уравнение имеет два корня \((.*), (.*)\) кратности один")]
     public void SqaureEquationHasTwoRoots(double x1, double x2)
     {
+        double[] actualRoots = _roots();
         double[] expectedRoots = new double[] {x1, x2};
         
         Array.Sort(expectedRoots);
-        Array.Sort(_actualRoots);
+        Array.Sort(actualRoots);
 
-        if (_actualRoots.Length != 2)
+        if (actualRoots.Length != 2)
         {
             Assert.Fail("");
         }
 
         for (int i = 0; i < expectedRoots.Length; i++)
         {
-            Assert.Equal(_actualRoots[i], expectedRoots[i]);
+            Assert.Equal(actualRoots[i], expectedRoots[i]);
         }
     }
 
     [Then(@"множество корней квадратного уравнения пустое")]
     public void SqaureEquationHasNoRoots()
     {
-        Assert.Empty(_actualRoots);
+        double[] actualRoots = _roots();
+        Assert.Empty(actualRoots);
     }
 }
